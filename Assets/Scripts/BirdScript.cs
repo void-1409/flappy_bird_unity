@@ -18,9 +18,19 @@ public class BirdScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow) == true && isGameOver == false)
+        if (!isGameOver)
         {
-            birdBody.velocity = Vector2.up * jumpStrength;
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                birdBody.velocity = Vector2.up * jumpStrength;
+            }
+
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+            if (screenPos.y >= Screen.height || screenPos.y <= 0)
+            {
+                logic.gameOver();
+                isGameOver = true;
+            }
         }
     }
 
