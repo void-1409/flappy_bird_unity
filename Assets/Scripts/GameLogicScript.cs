@@ -16,14 +16,14 @@ public class GameLogicScript : MonoBehaviour
     private void Start()
     {
         gameStartScreen.SetActive(true);
-        bird.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        bird.SetActive(false);
         spawnPipe.SetActive(false);
     }
 
     public void startGame()
     {
         gameStartScreen.SetActive(false);
-        bird.GetComponent<Rigidbody2D>().gravityScale = 5f;
+        bird.SetActive(true);
         spawnPipe.SetActive(true);
     }
     public void increaseScore()
